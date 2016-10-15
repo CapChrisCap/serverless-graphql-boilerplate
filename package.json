@@ -1,10 +1,10 @@
 {
-  "name": "serverless-graphql-chat",
+  "name": "serverless-graphql",
   "version": "0.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:serverless/serverless-graphql.git"
+    "url": "git@github.com/CapChrisCap/serverless-graphql-boilerplate.git"
   },
   "scripts": {
     "start": "npm run generate:config:local && MOCKED_DATABASE=true env-cmd foundation/environment/security.env.local nodemon ./foundation/devServer --exec babel-node",
