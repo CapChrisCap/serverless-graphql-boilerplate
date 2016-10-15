@@ -1,6 +1,6 @@
 # Reduced Serverless GraphQL Boilerplate (without application)
 
-This starter kit is an opinionated set of tools combined to help you get started building a Serverless application with an GraphQL endpoint and deploy them to production in minutes.
+This starter kit is an opinionated set of tools combined to help you get started building a Serverless application with an GraphQL endpoint and deploy them to production in minutes. Most of the code is used from the [serverless-graphql](https://github.com/serverless/serverless-graphql) project. 
 
 This example uses the following technologies:
 
@@ -9,14 +9,51 @@ This example uses the following technologies:
 - Webpack
 - Jest
 
+
+
+You need to have node 6 or higher installed. Next, ensure you have serverless installed and your AWS credentials are still configured. A installation can be found [here](https://github.com/serverless/serverless#quick-start). 
+
+Now, you should receive something like this, when you enter `sls info`: 
+```bash
+  Serverless Error ---------------------------------------
+
+     The command you entered did not catch on any hooks
+
+  Get Support --------------------------------------------
+     Docs:          docs.serverless.com
+     Bugs:          github.com/serverless/serverless/issues
+
+  Your Environment Infomation -----------------------------
+     OS:                 darwin
+     Node Version:       6.8.1
+     Serverless Version: 1.0.2
+```
+
+Ensure, that your serverless version is >= 1.0 and your node version is >= 6. You can see those information in the last two lines of the console output. 
+
 ## Install & Run
 
-You need to have node 6 or higher installed.
+If you have met all prerequisites, you can create your new lambda service with this boilerplate: 
 
 ```
-npm install -g serverless
+sls install \
+ --url https://github.com/CapChrisCap/serverless-graphql-boilerplate
+cd serverless-graphql-boilerplate
+```
+
+Next, install all dependencies to run the deployment process and the tests. 
+```
 npm install
 ```
+
+Congratulation, you finished all preparations and you start your first deployment: 
+```
+npm run deploy
+```
+
+For testing the resource, you can use the [GraphiQL](https://github.com/graphql/graphiql) browser IDE. 
+
+Important: If you receive the error, that your AWS credentials are not specified yet, please refer to this [guide](https://github.com/serverless/serverless/blob/master/docs/02-providers/aws/01-setup.md). 
 
 ## Developing
 
