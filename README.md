@@ -88,3 +88,26 @@ In order to keep the total amount of code uploaded to AWS Lambda small the `api`
 ### `api/package.json`
 
 - depdendencies: depdendencies used on AWS Lambda
+
+## Troubleshooting
+
+### Bucket not found
+
+If this error occured during the deployment process, then remove first the stage and region parameter for your serverless.yaml and add them later. It is possible that S3 is not avaible in your region and therefore the creation is not possible. For further logs take a look at the AWS service CloudFornation. 
+
+### Something went wrong: getting the logs
+
+You can see logs on different places with serverless. You have to diffence the following situations: 
+
+#### Something went wrong before `serverless deploy` is called
+ 
+ In this situation, someting went wrong with your compiled code. To ensure that you have full ES6 support, we use Babel and Webpack to precompile your code. Therefore, take a look at your console/terminal. They will give you hopefully all information you need. 
+  
+#### Something went wrong during the serverless deployment process
+
+This situation passes most frequently. Thereby, it is noticable that all events are saved in the AWS service Cloudfornation. This service will give you all information you need. 
+  
+#### Something went wrong during the Lambda execution
+
+In this situation, you have to take a look at the AWS Service CloudWatch because in this service, all your logs are stored during the lambda execution (in particular the console logs --> use the console for debugging :-) ). 
+
