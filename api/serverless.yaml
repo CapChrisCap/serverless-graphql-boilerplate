@@ -1,4 +1,4 @@
-service: serverless-graphql-chat
+service: serverless-graphql
 
 provider:
   name: aws
