@@ -1,4 +1,4 @@
-# Serverless GraphQL
+# Reduced Serverless GraphQL Boilerplate (without application)
 
 This starter kit is an opinionated set of tools combined to help you get started building a Serverless application with an GraphQL endpoint and deploy them to production in minutes.
 
@@ -6,9 +6,6 @@ This example uses the following technologies:
 
 - Serverless
 - GraphQL-js
-- Relay
-- React
-- CSSModules
 - Webpack
 - Jest
 
@@ -21,52 +18,21 @@ npm install -g serverless
 npm install
 ```
 
-Use mocked data (keep in mind due hard-coded data the interface might behave not as expected)
-```
-npm run update-schema
-npm start
-# visit http://localhost:3000 in your browser
-```
-
-Use live data from the development environment. You need to make sure you have access to your deployed lambda functions. This works only after you deployed it to production.
-
-```
-npm run update-schema
-npm run start:remote
-# visit http://localhost:3000 in your browser
-```
-
-## Setup for Production
-
-AWS has global unique bucket names. You need to replace `<your-s3-bucket-name>` in package.json as well as in the serverless.yml with your own custom name.
-
-Since the URL of the API is unknown until you create a stack, you need to deploy once without expecting the application to work using `npm run deploy`. After the initial deploy you can see the API url which you need to provide to the URL entry in `security.env.prod`.
-
-![deploy feedback](https://cloud.githubusercontent.com/assets/223045/19171420/6e271150-8bd1-11e6-9b49-e9fa88cac379.png)
-
-After these steps you are good to go and with your next `npm run deploy` your infrastructure should up and running. Visit `http://<your-s3-bucket-name>.s3-website-us-east-1.amazonaws.com` in your browser.
-
 ## Developing
 
-If you make changes to the GraphQL schema stop the server, regenerate it and restart the server:
+For developing, the [serverless-offline](https://www.npmjs.com/package/serverless-offline) module is recommended because it acts faster and is cheaper (for free :-) ) than developing live on the AWS console. See the [options](https://www.npmjs.com/package/serverless-offline#usage-and-command-line-options) for more information about the local configuration. 
 
 ```
-npm run update-schema
-npm start
+npm install -g serverless-offline
+sls offline start --port [YOUR_CUSTOM_PORT]
 ```
 
 ## Testing
 
-We use Jest as a test runner. To run all tests use
+We use Jest as a test runner. To run all tests use (ensure you have `npm install` called)
 
 ```
 npm run test
-```
-
-To update component snapshots after updating a component use
-
-```
-npm run test:update
 ```
 
 ## Security
